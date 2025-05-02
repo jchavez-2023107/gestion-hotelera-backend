@@ -1,3 +1,0 @@
-# Gestión Hotelera Back‑End
-
-
