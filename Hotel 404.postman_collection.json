@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "c2a04af0-9e8f-47a9-ab3b-c8cf79909f57",
+		"name": "Hotel 404",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37956968"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "pablo",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "palacios",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "ppalacios",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ppalacios@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Papa206152",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "45862535",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "Admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/api/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userlogin",
+									"value": "ppalacios",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Papa206152",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hotels",
+			"item": [
+				{
+					"name": "addHotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODE2ZTA0YzJmYWRjYjJhZWMyNDUzNzAiLCJ1c2VybmFtZSI6InBwYWxhY2lvcyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0NjMyOTc1NiwiZXhwIjoxNzQ2MzQwNTU2fQ.2QY04-SpxUdCsFfPCcUgfzGpEmuTdUTHK8dXGrGinL4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Delfinos VIP2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Hotel Resort",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Las Lisas, Santa Rosa, Guatemala ",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "55623659",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "delfinosRes2@delf.com",
+									"type": "text"
+								},
+								{
+									"key": "quality",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/api/hotels/addHotel",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"hotels",
+								"addHotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODE2ZTA0YzJmYWRjYjJhZWMyNDUzNzAiLCJ1c2VybmFtZSI6InBwYWxhY2lvcyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0NjMyOTc1NiwiZXhwIjoxNzQ2MzQwNTU2fQ.2QY04-SpxUdCsFfPCcUgfzGpEmuTdUTHK8dXGrGinL4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/api/hotels/getHotel?&name=1",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"hotels",
+								"getHotel"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": null
+								},
+								{
+									"key": "name",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpDate",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODE2ZTA0YzJmYWRjYjJhZWMyNDUzNzAiLCJ1c2VybmFtZSI6InBwYWxhY2lvcyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0NjMyOTc1NiwiZXhwIjoxNzQ2MzQwNTU2fQ.2QY04-SpxUdCsFfPCcUgfzGpEmuTdUTHK8dXGrGinL4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Delfinos Plus",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/api/hotels/updateHotel/6816e24d9c7c3f4f01742e11",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"hotels",
+								"updateHotel",
+								"6816e24d9c7c3f4f01742e11"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2ODE2ZWE0ZTdmMTFhZGVkM2MyODI5NDMiLCJ1c2VybmFtZSI6InBwYWxhY2lvcyIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc0NjMzMjI0NCwiZXhwIjoxNzQ2MzQzMDQ0fQ.919Psq54_Yb_DWouY9xxv6K3FgMDN46tFe3TAcNF-N4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "confirm",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/api/hotels/deleteHotel/6816e7ece209a1413fc138f2",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"hotels",
+								"deleteHotel",
+								"6816e7ece209a1413fc138f2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
