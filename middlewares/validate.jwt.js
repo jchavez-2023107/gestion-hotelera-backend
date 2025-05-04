@@ -37,65 +37,32 @@ export const validateJWT = async (req, res, next) => {
   }
 };
 
-export const isAdmin = async(req, res, next) =>{
-  try{
-      const {user} = req
-      if(!user || user.role !== 'Admin') return res.status(403).send(
-          {
-              success: false,
-              message: `You dont have access ${user.username}`
-          }
-      )
-      next()
-  }catch(e){
-      console.error(e)
-      return res.status(403).send(
-          {
-              success: false,
-              message: 'Error with authorization'
-          }
-      )
-  }
-}
+export const validateRoles = (...allowedRoles) =>{
+    return async (req, res, next) =>{
+        try{
+            const {user} = req
 
-export const isEmployee = async(req, res, next) =>{
-  try{
-      const {user} = req
-      if(!user || user.role !== 'Employee') return res.status(403).send(
-          {
-              success: false,
-              message: `You dont have access ${user.username}`
-          }
-      )
-      next()
-  }catch(e){
-      console.error(e)
-      return res.status(403).send(
-          {
-              success: false,
-              message: 'Error with authorization'
-          }
-      )
-  }
-}
-
-export const isCLIENT = async(req, res, next) =>{
-  try{
-      const {user} = req
-      if(!user || user.role !== 'CLIENT') return res.status(403).send(
-          {
-              success: false,
-              message: `You dont have access ${user.username}`
-          }
-      )
-      next()
-  }catch(e){
-      console.error(e)
-      return res.status(403).send(
-          {
-              success: false,
-              message: 'Error with authorization'
-          }
-      )
-  }
+            if(!user) return res.status(403).send(
+                {
+                    success: false,
+                    message: 'Usuario no autenticado'
+                }
+            )
+            if(!allowedRoles.includes(user.role)) return res.status(403).send(
+                {
+                    success: false,
+                    message: `Acceso denegado. Rol requerido: ${allowedRoles.join(' o ')}`
+                }
+            )
+            next()
+        }catch(e){
+            console.error(e)
+            return res.status(500).send(
+                {
+                    success: false,
+                    message: 'General Error ValidRol'
+                }
+            )
+        }
+    }
 }
