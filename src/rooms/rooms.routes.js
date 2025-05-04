@@ -9,54 +9,89 @@ import {
   getAvailableRooms
 } from "./rooms.controller.js"
 
-import { validateJWT, validateRoles } from "../../middlewares/validate.jwt.js"
+import {
+  validateRoomType,
+  validatePricePerNight,
+  validateCapacityMax,
+  validateRoomName,
+  validateBedDistribution,
+  validateHotelExists,
+  validateAmenities,
+  validateAvailableField,
+  validateRoomDuplication
+} from "../../middlewares/rooms.validations.js"
 
+import { validateJWT, validateRoles } from "../../middlewares/validate.jwt.js"
 
 const api = Router()
 
 api.post("/addRoom", 
-    [
-        validateJWT, 
-        validateRoles("Admin")
-    ], 
-createRoom)
+  [
+    validateJWT, 
+    validateRoles("Admin"),
+    validateRoomType,
+    validatePricePerNight,
+    validateCapacityMax,
+    validateRoomName,
+    validateBedDistribution,
+    validateHotelExists,
+    validateAmenities,
+    validateAvailableField,
+    validateRoomDuplication
+  ], 
+  createRoom
+)
 
 api.get("/getRooms", 
-    [
-        validateJWT
-    ], 
-getRooms)
+  [
+    validateJWT
+  ], 
+  getRooms
+)
 
 api.get("/getRoom/:id", 
-    [
-        validateJWT
-    ],
-getRoomById)
+  [
+    validateJWT
+  ],
+  getRoomById
+)
 
 api.get("/getRoomsByHotel/:hotelId", 
-    [
-        validateJWT
-    ], 
-getRoomsByHotel)
+  [
+    validateJWT
+  ], 
+  getRoomsByHotel
+)
 
 api.get("/getAvailableRooms", 
-    [
-        validateJWT
-    ], 
-getAvailableRooms)
+  [
+    validateJWT
+  ], 
+  getAvailableRooms
+)
 
 api.put("/updateRoom/:id", 
-    [
-        validateJWT, 
-        validateRoles("Admin")
-    ], 
-updateRoom)
+  [
+    validateJWT, 
+    validateRoles("Admin"),
+    validateRoomType,
+    validatePricePerNight,
+    validateCapacityMax,
+    validateRoomName,
+    validateBedDistribution,
+    validateHotelExists,
+    validateAmenities,
+    validateAvailableField
+  ], 
+  updateRoom
+)
 
 api.delete("/deleteRoom/:id", 
-    [
-        validateJWT, 
-        validateRoles("Admin")
-    ], 
-deleteRoom)
+  [
+    validateJWT, 
+    validateRoles("Admin")
+  ], 
+  deleteRoom
+)
 
 export default api
