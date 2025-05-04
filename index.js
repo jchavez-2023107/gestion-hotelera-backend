@@ -4,18 +4,18 @@ import dotenv from "dotenv";
 dotenv.config(); // Cargar variables de entorno desde .env
 
 import { connectDB } from "./configs/mongo.js"; // Conexión a la base de datos
-import { agregarUsuariosPorDefecto } from "./src/users/user.controller.js";
-import { agregarCategoriasPorDefecto } from "./src/categories/category.controller.js";
-import { agregarProductosPorDefecto } from "./src/products/product.controller.js";
+
+import {createDefaultHotels} from './src/hotels/hotels.default.js'
+createDefaultHotels()
+
 import { initServer } from "./configs/app.js"; // Inicialización del servidor Express
+
+
 
 // Iniciar conexión a MongoDB
 (async () => {
   try {
     await connectDB(); // Esperar a que la base de datos se conecte antes de levantar el servidor
-    await agregarUsuariosPorDefecto();
-    await agregarCategoriasPorDefecto();
-    await agregarProductosPorDefecto();
     initServer(); // Inicializar el servidor Express solo si la BD está conectada
   } catch (err) {
     console.error(
