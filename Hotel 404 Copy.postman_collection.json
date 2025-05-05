@@ -1,0 +1,849 @@
+{
+	"info": {
+		"_postman_id": "ac267f37-0c28-46a6-9553-38122c13a582",
+		"name": "Hotel 404 Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37956994"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "pablo",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "palacios",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "ppalacios",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ppalacios@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Papa206152",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "45862535",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "Admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/api/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var data = JSON.parse(responseBody);\r",
+									"postman.setGlobalVariable(\"token\", data.token)"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "userlogin",
+									"value": "dchupina2006",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "hola123*",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hotels",
+			"item": [
+				{
+					"name": "addHotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Delfinos VIP2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Hotel Resort",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "Las Lisas, Santa Rosa, Guatemala ",
+									"type": "text"
+								},
+								{
+									"key": "phone",
+									"value": "55623659",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "delfinosRes2@delf.com",
+									"type": "text"
+								},
+								{
+									"key": "quality",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/api/hotels/addHotel",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"hotels",
+								"addHotel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getHotel",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/api/hotels/getHotel?name=Delfinos VIP2",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"hotels",
+								"getHotel"
+							],
+							"query": [
+								{
+									"key": null,
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Delfinos VIP2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateHotel",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Kinalillo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/api/hotels/updateHotel/6817a7df1b98e33234d2804e",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"hotels",
+								"updateHotel",
+								"6817a7df1b98e33234d2804e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteHotel",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "confirm",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:2636/api/hotels/deleteHotel/6816e7ece209a1413fc138f2",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"hotels",
+								"deleteHotel",
+								"6816e7ece209a1413fc138f2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rooms",
+			"item": [
+				{
+					"name": "addRoom",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"hotel\": \"6817bdc8db1f784fbf5cdcf0\",\r\n  \"name\": \"Suite Deluxe112\",\r\n  \"description\": \"Vista al mar con jacuzzi.\",\r\n  \"pricePerNight\": 180.00,\r\n  \"type\": \"suite\",\r\n  \"bedDistribution\": {\r\n    \"individual\": 0,\r\n    \"double\": 0,\r\n    \"family\": 3\r\n  },\r\n  \"available\": false,\r\n  \"capacityMax\": 3,\r\n  \"amenities\": [\"TV\", \"WiFi\", \"Aire acondicionado\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2636/api/rooms/addRoom",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"rooms",
+								"addRoom"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRooms",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/api/rooms/getRooms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"rooms",
+								"getRooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRoomID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/api/rooms/getRoom/6817a7ef1b98e33234d28056",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"rooms",
+								"getRoom",
+								"6817a7ef1b98e33234d28056"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getRoomHotelId",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/api/rooms/getRoomsByHotel/6817b669172f0d3a14330afc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"rooms",
+								"getRoomsByHotel",
+								"6817b669172f0d3a14330afc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRoom",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"hotel\": \"6817b669172f0d3a14330afc\",\r\n  \"name\": \"Suite Deluxe\",\r\n  \"description\": \"Vista al mar con jacuzzi y balcon\",\r\n  \"pricePerNight\": 320.00,\r\n  \"available\": false,\r\n  \"type\": \"suite\",\r\n  \"bedDistribution\": {\r\n    \"individual\": 2,\r\n    \"double\": 3,\r\n    \"family\": 1\r\n  },\r\n  \"capacityMax\": 11,\r\n  \"amenities\": [\"TV\", \"WiFi\", \"Aire acondicionado\", \"mini bar\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2636/api/rooms/updateRoom/6817b6ed172f0d3a14330b22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"rooms",
+								"updateRoom",
+								"6817b6ed172f0d3a14330b22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRoom",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/api/rooms/deleteRoom/6817a7ef1b98e33234d28056",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"rooms",
+								"deleteRoom",
+								"6817a7ef1b98e33234d28056"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAvailableRooms",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/api/rooms/getAvailableRooms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"rooms",
+								"getAvailableRooms"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservations",
+			"item": [
+				{
+					"name": "addReservation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "68180e1d22e9885d007261cd",
+									"type": "text"
+								},
+								{
+									"key": "room",
+									"value": "68180e1d22e9885d007261d0",
+									"type": "text"
+								},
+								{
+									"key": "checkInDate",
+									"value": "2025-05-04",
+									"type": "text"
+								},
+								{
+									"key": "checkOutDate",
+									"value": "2025-05-08",
+									"type": "text"
+								},
+								{
+									"key": "numberOfGuests",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "confirmed",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:2636/api/reservations/addReservation",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"reservations",
+								"addReservation"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getReservation",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/api/reservations/getReservations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"reservations",
+								"getReservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getReservationID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:2636/api/reservations/getReservation/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"reservations",
+								"getReservation",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateReservation",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "user",
+									"value": "68180e1d22e9885d007261cd",
+									"type": "text"
+								},
+								{
+									"key": "room",
+									"value": "68180e1d22e9885d007261d0",
+									"type": "text"
+								},
+								{
+									"key": "checkInDate",
+									"value": "2025-05-04",
+									"type": "text"
+								},
+								{
+									"key": "checkOutDate",
+									"value": "2025-05-08",
+									"type": "text"
+								},
+								{
+									"key": "numberOfGuests",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "cancelled",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:2636/api/reservations/updateReservation/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"reservations",
+								"updateReservation",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteReservation",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:2636/api/reservations/deleteReservation/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"reservations",
+								"deleteReservation",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "CreateEvents",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Conferencia Internacional\",\r\n  \"hotel\": \"6817b9d8e1570f198cf8de4c\",\r\n  \"date\": \"2025-06-10T10:00:00.000Z\",\r\n  \"services\": [\"Wi-Fi\", \"Coffe Break\", \"Proyector\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2636/api/events",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEvents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/api/events",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEvents",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"name\": \"Conferencia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2636/api/events/681815469904e5a72e7ceb49",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"events",
+								"681815469904e5a72e7ceb49"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletEvets",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/api/events/681815469904e5a72e7ceb49",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"events",
+								"681815469904e5a72e7ceb49"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
