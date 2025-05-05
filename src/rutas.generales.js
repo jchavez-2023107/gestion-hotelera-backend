@@ -16,6 +16,7 @@ export const rutasGenerales = (app) => {
   app.use('/api/rooms', roomRoutes)
   app.use('/api/reservations', reservationsRoutes)
   app.use('/api/events', eventRoutes)
+  app.use('/gestorHoteles/v1/auth',authRoutes)
   /* app.use('/api/products', productsRoutes)
   app.use('/api/suppliers', supplierRoutes)
   app.use('/api/categorys', categoryRoutes) */
