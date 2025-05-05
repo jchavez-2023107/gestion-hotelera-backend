@@ -7,9 +7,11 @@ import { connectDB } from "./configs/mongo.js"; // Conexión a la base de datos
 
 import {createDefaultHotels} from './src/hotels/hotels.default.js'
 import { createDefaultUsers } from "./src/users/user.default.js";
+import {addDefaultEvents} from './src/events/events.controller.js'
 
 createDefaultHotels()
 createDefaultUsers()
+addDefaultEvents()
 
 import { initServer } from "./configs/app.js"; // Inicialización del servidor Express
 

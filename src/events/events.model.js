@@ -1,35 +1,26 @@
-/* ------------------RECOMENDACION DE COSAS MINIMAS----------
-import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
 
-const eventSchema = new Schema({
-  hotel: {
-    type: Schema.Types.ObjectId,
-    ref: 'Hotel',
-    required: true,
+const eventSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: [true, "El nombre del evento es obligatorio"],
+    },
+    hotel: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Hotels", // Relación con el modelo de Hotel
+      required: [true, "El hotel asociado es obligatorio"],
+    },
+    date: {
+      type: Date,
+      required: [true, "La fecha del evento es obligatoria"],
+    },
+    services: [{
+      type: String,
+      default: "",
+    }],
   },
-  name: {
-    type: String,
-    required: true,
-    maxLength: 100,
-  },
-  description: {
-    type: String,
-    maxLength: 500,
-  },
-  date: {
-    type: Date,
-    required: true,
-  },
-  eventType: {
-    type: String,
-    enum: ['wedding', 'conference', 'meeting', 'other'],
-    default: 'other',
-  },
-  services: {
-    type: [String], // Ej. ["catering", "decoración", "audio"]
-    default: [],
-  }
-}, { timestamps: true, versionKey: false });
+  { timestamps: true, versionKey: false }
+);
 
-export default model('Event', eventSchema);
-*/
+export default mongoose.model("Events", eventSchema);
