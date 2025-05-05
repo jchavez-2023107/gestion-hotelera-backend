@@ -49,6 +49,14 @@ const userSchema = new mongoose.Schema({
   },
 });
 
+// no se deberia agregar un status para 
+/*
+status: {
+  type: String,
+  enum: ['active', 'inactive'],
+  default: 'active'
+}
+*/ 
 // **Eliminamos** el hook pre('save') para no re-hashear aquí.
 // Porque el hashing ya lo hacemos en utils/encrypt.js antes de construir el User.
 
