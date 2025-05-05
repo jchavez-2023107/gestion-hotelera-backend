@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4d56e5a4-5cc5-4b39-8f27-aff3b5c230b6",
-		"name": "Hotel 404",
+		"_postman_id": "ac267f37-0c28-46a6-9553-38122c13a582",
+		"name": "Hotel 404 Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "37957014"
+		"_exporter_id": "37956994"
 	},
 	"item": [
 		{
@@ -713,6 +713,131 @@
 								"reservations",
 								"deleteReservation",
 								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "CreateEvents",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Conferencia Internacional\",\r\n  \"hotel\": \"6817b9d8e1570f198cf8de4c\",\r\n  \"date\": \"2025-06-10T10:00:00.000Z\",\r\n  \"services\": [\"Wi-Fi\", \"Coffe Break\", \"Proyector\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2636/api/events",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetEvents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/api/events",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateEvents",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"name\": \"Conferencia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:2636/api/events/681815469904e5a72e7ceb49",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"events",
+								"681815469904e5a72e7ceb49"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletEvets",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:2636/api/events/681815469904e5a72e7ceb49",
+							"host": [
+								"localhost"
+							],
+							"port": "2636",
+							"path": [
+								"api",
+								"events",
+								"681815469904e5a72e7ceb49"
 							]
 						}
 					},
